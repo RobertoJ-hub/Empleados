@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Editar Employee</h1>
+	
+	<form th:action="@{/actualizar}" method="POST" th:Object="${Employees}">
+	
+	<label for="Id">ID: <span th:text="${empleado.getEMPLOYEE_ID()}"></span></label><br>
+	<input type="text" class="input" name="EMPLOYEE_ID" th:value="${empleado.getEMPLOYEE_ID()}"><br>
+	
+	<label for="Name">NAME: </label><br>
+	  <input type="text" class="input" name="FIRSTNAME" th:value="${empleado.getFIRSTNAME()}"><br>
+	  
+	  <label for="Last_Name">LAST NAME: </label><br>
+	  <input type="text" name="LASTNAME" th:value="${empleado.getLASTNAME()}"><br>
+	  
+	  <label for="Email">EMAIL: </label><br>
+	  <input type="text" name="EMAIL" th:value="${empleado.getEMAIL()}"><br>
+	  
+	  <label for="Phone_Number">PHONE NUMBER: </label><br>
+	  <input type="text" name="PHONE_NUMBER" th:value="${empleado.getPHONE_NUMBER()}"><br>
+	  
+	  <label for="Hire_Date">HIRE DATE </label><br>
+	  <input type="text" name="HIRE_DATE" th:value="${empleado.getHIRE_DATE()}"><br>
+	  
+	  <label for="Job_Id">JOB ID: </label><br>
+	  <select name = "JOB_ID">
+    	<option th:each="jobs : ${datosJobs}" th:value="${jobs.JOB_ID}" th:text="${jobs.JOB_TITLE}" th:selected="${empleado.job.JOB_ID==jobs.JOB_ID}">
+    	</option>													
+		</select>
+		<br>
+	  
+	  <label for="Salary">SALARY: </label><br>
+	  <input type="text" name="SALARY" th:value="${empleado.getSALARY()}"><br>
+	  
+	  <label for="Manager_Id">MANAGER ID: </label><br>
+	  <input type="text" name ="MANAGER_ID" th:value="${empleado.getMANAGER_ID()}"><br>
+	  
+	   <label for="Job_Id">DEPARTMENT NAME:  </label><br>
+	   <select name="DEPARTMENT_ID">
+    	<option th:each="department : ${datosDepartments}" th:value="${department.DEPARTMENT_ID}" th:text="${department.DEPARTMENT_NAME}" th:selected="empleado.departments.DEPARTMENT_NAME == department.DEPARTMENT_NAME">
+    	</option>
+		</select>
+		<br>
+		<br>
+
+		<input type="submit" class="btn btn-primary" value="Guardar">  
+	  
+	  
+	  </form>
+</body>
+</html>

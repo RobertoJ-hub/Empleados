@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<h1>Eliminar Employee</h1>
+	
+	<label for="Id_Employee">ID: </label>
+	<label for="EMPLOYEE_ID" th:text="${empleado.getEMPLOYEE_ID()}"></label><br><br>
+	
+	<label for="Name">NAME: </label>
+	<label for="FIRSTNAME" th:text="${empleado.getFIRSTNAME()}"></label><br><br>
+	
+	<label for="Name">LAST NAME: </label>
+	<label for="LASTNAME" th:text="${empleado.getLASTNAME()}"></label><br><br>
+	  
+	<label for="Email">EMAIL: </label>
+	<label for="EMAIL" th:text="${empleado.getEMAIL()}"></label><br><br>
+	
+	<label for="Phone_Number">PHONE_NUMBER: </label>
+	<label for="PHONE_NUMBER" th:text="${empleado.getPHONE_NUMBER()}"></label><br><br>
+	
+	<label for="Name">HIRE DATE: </label>
+	<label for="HIRE_DATE" th:text="${empleado.getHIRE_DATE()}"></label><br><br>
+	  
+	<label for="Job_ID">JOB NAME: </label>
+	<label for="JOB_ID" th:text="${empleado.job.JOB_TITLE}"></label><br><br>
+	  
+	<label for="Salary">SALARY: </label>
+	<label for="SALARY" th:text="${empleado.getSALARY()}"></label><br><br>
+	
+	<label for="Name">MANAGER ID: </label>
+	<label for="MANAGER_ID" th:text="${empleado.getMANAGER_ID()}"></label><br><br>
+	  
+	<label for="Name">DEPARTMENT NAME: </label>
+	<label for="DEPARTMENT_NAME" th:text="${empleado.departments.DEPARTMENT_NAME}">NAME</label><br><br>
+	    
+	<form th:action="@{/}">
+			<input type="submit" class="btn btn-primary" value="Cancelar">
+	</form>
+	
+	<a th:href="@{/confirmacionEliminacion/} + *{empleado.EMPLOYEE_ID}" class="btn btn-secondary">
+	       <input type="submit" class="btn btn-primary" value="Eliminar">
+	</a>
+	      
+</body>
+</html>
