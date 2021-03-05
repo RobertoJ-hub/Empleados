@@ -43,6 +43,27 @@ public class Employees {
 	private Departments departments;
 	private Integer DEPARTMENT_ID;
 	
+	
+	
+	public Employees() {
+		
+	}
+	public Employees(Integer eMPLOYEE_ID, String fIRSTNAME, String lASTNAME, String eMAIL, String pHONE_NUMBER,
+			Date hIRE_DATE, Jobs job, String jOB_ID, Double sALARY, Integer mANAGER_ID,
+			Departments departments, Integer dEPARTMENT_ID) {
+		EMPLOYEE_ID = eMPLOYEE_ID;
+		FIRSTNAME = fIRSTNAME;
+		LASTNAME = lASTNAME;
+		EMAIL = eMAIL;
+		PHONE_NUMBER = pHONE_NUMBER;
+		HIRE_DATE = hIRE_DATE;
+		this.job = job;
+		JOB_ID = jOB_ID;
+		SALARY = sALARY;
+		MANAGER_ID = mANAGER_ID;
+		this.departments = departments;
+		DEPARTMENT_ID = dEPARTMENT_ID;
+	}
 	public String getJOB_ID() {
 		return JOB_ID;
 	}

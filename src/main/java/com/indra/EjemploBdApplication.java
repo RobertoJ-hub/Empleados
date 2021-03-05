@@ -9,6 +9,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.indra.model.Employees;
 import com.indra.model.JobHistory;
 import com.indra.model.JobHistoryEmbedded;
 import com.indra.repository.EmployeesRepository2;
@@ -28,11 +29,12 @@ public class EjemploBdApplication implements CommandLineRunner{
 	}
 	
 	@Autowired
-	private EmployeesService e;
+	private EmployeesService eS;
 
 	@Override
 	public void run(String... args) throws Exception {
-		e.findByFIRSTNAMELikeAndSALARYBetween("J%",0.0,2400.00);
+		//Employees e = new Employees(null,"Robertos",null,null,null,null,null,null,null,null,null,null);
+		//eS.update(247, e);
 	}
 		
 }

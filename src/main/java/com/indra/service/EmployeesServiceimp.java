@@ -38,7 +38,7 @@ public class EmployeesServiceimp implements EmployeesService {
 	
 	@Override
 	public Iterable<Employees> findAll() {
-		System.out.println("Mostrando datos de la BD de la tabla Employees");
+		//System.out.println("Mostrando datos de la BD de la tabla Employees");
 		Iterable<Employees> iter3 = repoE.findAll();		
 		return iter3;
 	}
@@ -121,12 +121,13 @@ public class EmployeesServiceimp implements EmployeesService {
 	}
 
 	@Override
-	public Employees update(Integer id,String FIRSTNAME,String LASTNAME,String EMAIL, String PHONE_NUMBER,Date HIREDATE,String JOB_ID,Double SALARY,Integer MANAGER_ID,Integer DEPARTMENT_ID ) {
+	public void update(Integer id,String FIRSTNAME,String LASTNAME,String EMAIL, String PHONE_NUMBER,Date HIREDATE,String JOB_ID,Double SALARY,Integer MANAGER_ID,Integer DEPARTMENT_ID ) {
 		Optional<Employees> e = repoE.findById(id);
-		Employees emplo = e.get();
+		
 		boolean comprobacion = false;
+		
 		if(e.isPresent()) {
-			 
+			Employees emplo = e.get();
 			Optional<JobHistory> jhi = repoJH.findById(new JobHistoryEmbedded(id,emplo.getHIRE_DATE())); 
 			
 			if(jhi.isPresent()) {
@@ -195,7 +196,6 @@ public class EmployeesServiceimp implements EmployeesService {
 		}else {
 			System.out.println("No existe el registro que se quiere editar");
 		}
-		return emplo;
 	}
 
 	@Override
@@ -256,6 +256,49 @@ public class EmployeesServiceimp implements EmployeesService {
 			System.out.println(""+emp.toString());
 		}
 		return null;
+	}
+
+
+	@Override
+	public void update(Integer id,Employees e) {
+		Optional<Employees> em = repoE.findById(id);
+		
+		if(em.isPresent()) {
+			Employees employee = em.get();
+			Optional<JobHistory> jhi = repoJH.findById(new JobHistoryEmbedded(id,employee.getHIRE_DATE())); 
+			
+			if(jhi.isPresent()) {
+				repoJH.deleteById(new JobHistoryEmbedded(id,employee.getHIRE_DATE()));
+			}
+			if(e.getFIRSTNAME() != null) {
+				employee.setFIRSTNAME(e.getFIRSTNAME());
+			}
+			if(e.getLASTNAME() != null) {
+				employee.setLASTNAME(e.getLASTNAME());
+			}
+			if(e.getEMAIL() != null) {
+				employee.setEMAIL(e.getEMAIL());
+			}
+			if(e.getPHONE_NUMBER() != null) {
+				employee.setPHONE_NUMBER(e.getPHONE_NUMBER());
+			}
+			if(e.getHIRE_DATE() != null) {
+				employee.setHIRE_DATE(e.getHIRE_DATE());
+			}
+			if(e.getJOB_ID() != null) {
+				employee.setJOB_ID(e.getJOB_ID());
+			}
+			if(e.getSALARY() != null) {
+				employee.setSALARY(e.getSALARY());
+			}
+			if(e.getMANAGER_ID() != null) {
+				employee.setMANAGER_ID(e.getMANAGER_ID());
+			}
+			if(e.getDEPARTMENT_ID() != null) {
+				employee.setDEPARTMENT_ID(e.getMANAGER_ID());
+			}
+			repoE.save(employee);
+		}
 	}
 
 }

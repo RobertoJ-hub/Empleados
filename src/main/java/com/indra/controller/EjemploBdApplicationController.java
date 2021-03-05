@@ -76,9 +76,18 @@ public class EjemploBdApplicationController {
 	}
 	
 	@PostMapping("/actualizar")
-	public String actualizar(Employees e, Model m) {
+	public String actualizarE(Employees e, Model m) {
 		//e.setEMPLOYEE_ID(e.getEMPLOYEE_ID());
-		eS.update(e.getDEPARTMENT_ID(), e.getFIRSTNAME(), e.getLASTNAME(), e.getEMAIL(), e.getPHONE_NUMBER(), e.getHIRE_DATE(), e.getJOB_ID(), e.getSALARY(), e.getMANAGER_ID(), e.getDEPARTMENT_ID());
+		System.out.println("FIRST NAME: "+e.getFIRSTNAME());
+		System.out.println("LAST_NAME: "+e.getLASTNAME());
+		System.out.println("EMAIL: "+e.getEMAIL());
+		System.out.println("PHONE: "+e.getPHONE_NUMBER());
+		System.out.println("HIRE DATE: "+e.getHIRE_DATE());
+		System.out.println("JOB: "+e.getJOB_ID());
+		System.out.println("SALARY: "+e.getSALARY());
+		System.out.println("MANAGER ID: "+e.getMANAGER_ID());
+		System.out.println("DEPARTMENT: "+e.getDEPARTMENT_ID());
+		//eS.update(247,e);
 		return "redirect:/";
 	}
 	
